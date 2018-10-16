@@ -43,11 +43,11 @@ int main(int argc, char const *argv[])
 
         // TODO reverse lexicographically sort
 
-        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.begin(); ip != ip_pool.end(); ++ip)
+        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
         {
-            for(std::vector<std::string>::const_iterator ip_part = ip->begin(); ip_part != ip->end(); ++ip_part)
+            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
             {
-                if (ip_part != ip->begin())
+                if (ip_part != ip->cbegin())
                 {
                     std::cout << ".";
 
