@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
 {
     try
     {
-        std::vector<std::vector<std::string>> ip_pool;
+        std::vector<std::vector<std::string> > ip_pool;
 
         for(std::string line; std::getline(std::cin, line);)
         {
@@ -43,11 +43,11 @@ int main(int argc, char const *argv[])
 
         // TODO reverse lexicographically sort
 
-        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.begin(); ip != ip_pool.end(); ++ip)
         {
-            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
+            for(std::vector<std::string>::const_iterator ip_part = ip->begin(); ip_part != ip->end(); ++ip_part)
             {
-                if (ip_part != ip->cbegin())
+                if (ip_part != ip->begin())
                 {
                     std::cout << ".";
 
