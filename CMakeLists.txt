@@ -6,9 +6,11 @@ project(ip_filter VERSION 0.0.1)
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-add_executable(ip_filter ip_filter.cpp)
+include_directories(src/)
 
-add_executable(ip_filter_tests ip_filter_tests.cpp)
+add_executable(ip_filter src/ip_filter.cpp)
+
+add_executable(ip_filter_tests test/ip_filter_tests.cpp)
 
 set_target_properties(ip_filter ip_filter_tests PROPERTIES
 	CXX_STANDARD 14
