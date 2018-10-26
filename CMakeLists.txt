@@ -14,9 +14,9 @@ set(INCLUDE_DIR src/)
 
 add_executable(ip_filter_tests ${TESTS_DIR}/ip_filter_tests.cpp)
 
-#include_directories(${INCLUDE_DIR})
+include_directories(${INCLUDE_DIR})
 
-target_include_directories(ip_filter_tests PRIVATE ${INCLUDE_DIR})
+#target_include_directories(ip_filter_tests PRIVATE ${INCLUDE_DIR})
 
 message(STATUS ${INCLUDE_DIRIECTORIES})
 
