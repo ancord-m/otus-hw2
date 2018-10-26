@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(ENV{TRAVIS_BUILD_NUMBER} 1)
+#set(ENV{TRAVIS_BUILD_NUMBER} 1)
 
 project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
@@ -12,9 +12,11 @@ set(TESTS_DIR test/)
 
 set(INCLUDE_DIR src/)
 
-add_executable(ip_filter_tests test/ip_filter_tests.cpp)
+add_executable(ip_filter_tests ${TESTS_DIR}/ip_filter_tests.cpp)
 
-target_include_directories(ip_filter_tests PRIVATE .)
+#include_directories(${INCLUDE_DIR})
+
+target_include_directories(ip_filter_tests PRIVATE ${INCLUDE_DIR})
 
 message(STATUS ${INCLUDE_DIRIECTORIES})
 
