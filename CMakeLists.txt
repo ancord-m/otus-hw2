@@ -1,16 +1,18 @@
 cmake_minimum_required(VERSION 3.5)
 
-#project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+set(ENV{TRAVIS_BUILD_NUMBER} 1)
 
-project(ip_filter VERSION 0.0.1)
+project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-
-include_directories(src/)
 
 add_executable(ip_filter src/ip_filter.cpp)
 
 add_executable(ip_filter_tests test/ip_filter_tests.cpp)
+
+target_include_directories(ip_filter_tests PRIVATE src/)
+
+message(STATUS ${INCLUDE_DIRIECTORIES})
 
 set_target_properties(ip_filter ip_filter_tests PROPERTIES
 	CXX_STANDARD 14
