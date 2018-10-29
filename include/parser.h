@@ -3,7 +3,7 @@
 #include <iostream>
 
 class Parser {
-	std::vector<std::string> lines;
+	std::vector<std::string> ip_pool;
 
 	public:
 		//Parser() { std::cout << "ctor" << std::endl; }

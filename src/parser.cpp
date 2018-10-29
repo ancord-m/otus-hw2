@@ -14,5 +14,12 @@ std::vector<std::string> Parser::get_ip_list(void)
 
 std::string Parser::extractAndSaveTextBeforeFirstTab(std::string line)
 {
-	return "123";
+	std::string result;
+
+	std::string::size_type start = 0;
+	std::string::size_type end   = line.find_first_of('\t');
+	result = line.substr(start, end);
+	ip_pool.push_back(result);
+
+	return result;
 }

@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE(GotEmptyString_NothingFound)
 	BOOST_CHECK(true == ip_parser.get_ip_list().empty());
 }
 
-BOOST_AUTO_TEST_CASE(TabSeparatedStringAtInput_AllTextBeforeFirstTabCaptured)
+BOOST_AUTO_TEST_CASE(TabSeparatedStringAtInput_123string_extracted)
 {
 	Parser ip_parser;
 	auto line = "123\t456\t789\n";
@@ -25,5 +25,18 @@ BOOST_AUTO_TEST_CASE(TabSeparatedStringAtInput_AllTextBeforeFirstTabCaptured)
 
 	BOOST_CHECK_EQUAL(expected, actual);
 }
+
+BOOST_AUTO_TEST_CASE(TabSeparatedStringWithRealIP_AtInput_extractedSavedAndReturned)
+{
+	Parser ip_parser;
+	auto line = "185.89.100.249\t752\t39\n";
+	auto expected = "185.89.100.249";
+
+	auto actual = ip_parser.extractAndSaveTextBeforeFirstTab(line);
+
+	BOOST_CHECK_EQUAL(expected, actual);
+}
+
+BOOST_AUTO_TEST_CASE()
 
 BOOST_AUTO_TEST_SUITE_END()
