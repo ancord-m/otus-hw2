@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-#set(ENV{TRAVIS_BUILD_NUMBER} 1)
+set(ENV{TRAVIS_BUILD_NUMBER} 1)
 
 project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
@@ -10,15 +10,11 @@ add_executable(ip_filter src/ip_filter.cpp)
 
 set(TESTS_DIR test/)
 
-set(INCLUDE_DIR src/)
+set(INCLUDE_DIR include/)
 
-add_executable(ip_filter_tests ${TESTS_DIR}/ip_filter_tests.cpp)
+set(SRC_UNDER_TEST src/parser.cpp)
 
-include_directories(${INCLUDE_DIR})
-
-#target_include_directories(ip_filter_tests PRIVATE ${INCLUDE_DIR})
-
-message(STATUS ${INCLUDE_DIRIECTORIES})
+add_executable(ip_filter_tests ${TESTS_DIR}/ip_filter_tests.cpp ${SRC_UNDER_TEST})
 
 set_target_properties(ip_filter ip_filter_tests PROPERTIES
 	CXX_STANDARD 14
@@ -30,6 +26,8 @@ set_target_properties(ip_filter_tests PROPERTIES
 	COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
 	INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
+
+target_include_directories(ip_filter_tests PRIVATE ${INCLUDE_DIR})
 
 target_link_libraries(ip_filter_tests
 	${Boost_LIBRARIES}
