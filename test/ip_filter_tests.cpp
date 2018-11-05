@@ -36,9 +36,9 @@ BOOST_AUTO_TEST_CASE(IpCaptured_Splitted_And_Saved)
 	BOOST_CHECK(false == parser.getIpPool().empty());
 
 	BOOST_CHECK_EQUAL("127", parser.getIpPool().at(0)[0]);
-	BOOST_CHECK_EQUAL("0", parser.getIpPool().at(0)[1]);
-	BOOST_CHECK_EQUAL("0", parser.getIpPool().at(0)[2]);
-	BOOST_CHECK_EQUAL("1", parser.getIpPool().at(0)[3]);
+	BOOST_CHECK_EQUAL(  "0", parser.getIpPool().at(0)[1]);
+	BOOST_CHECK_EQUAL(  "0", parser.getIpPool().at(0)[2]);
+	BOOST_CHECK_EQUAL(  "1", parser.getIpPool().at(0)[3]);
 }
 
 

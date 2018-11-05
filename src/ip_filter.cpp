@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "parser.h"
+
 // ("",  '.') -> [""]
 // ("11", '.') -> ["11"]
 // ("..", '.') -> ["", "", ""]
@@ -33,13 +35,25 @@ int main(int argc, char const *argv[])
 {
     try
     {
-        std::vector<std::vector<std::string> > ip_pool;
+      /*  std::vector<std::vector<std::string> > ip_pool;
 
         for(std::string line; std::getline(std::cin, line);)
         {
             std::vector<std::string> v = split(line, '\t');
             ip_pool.push_back(split(v.at(0), '.'));
         }
+        */
+
+        Parser parser;
+
+        for(std::string line; std::getline(std::cin, line);)
+        {
+            auto text = parser.captureTextBeforeFirstTab(line);
+            parser.splitIpAddressIntoPartsAndSave(text);
+        }
+
+        auto ip_pool = parser.getIpPool();
+
 
         // TODO reverse lexicographically sort
 

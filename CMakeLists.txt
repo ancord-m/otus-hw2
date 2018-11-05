@@ -12,7 +12,7 @@ set(SRC_DIR src)
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-add_executable(ip_filter ${SRC_DIR}/ip_filter.cpp)
+add_executable(ip_filter ${SRC_DIR}/ip_filter.cpp ${SRC_DIR}/parser.cpp)
 
 add_executable(ip_filter_tests ${TESTS_DIR}/ip_filter_tests.cpp ${SRC_DIR}/parser.cpp)
 
@@ -21,6 +21,8 @@ set_target_properties(ip_filter ip_filter_tests PROPERTIES
 	CXX_STANDARD_REQUIRED ON
 	COMPILE_OPTIONS -Wpedantic;-Wall;-Wextra
 )
+
+target_include_directories(ip_filter PRIVATE ${INCLUDE_DIR})
 
 set_target_properties(ip_filter_tests PROPERTIES
 	COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
