@@ -1,10 +1,24 @@
 #include <string>
 #include <vector>
 
+template<typename T>
+using DoubleVector = std::vector<std::vector<T> >;
+
+template<typename T>
+using Vector = std::vector<T>;
+
 class Parser {
-	std::vector<std::string> lines;
+
+	enum Delimiters
+	{
+		DOT = '.',
+		TAB = '\t'
+	};
+
+	DoubleVector<std::string> ip_pool;
 
 	public:
-		auto find_ip_adress(auto line);
-		auto get_ip_list(void);
+		auto captureTextBeforeFirstTab(std::string) -> std::string;
+		void splitIpAddressIntoPartsAndSave(std::string line);		
+		auto getIpPool(void) -> DoubleVector<std::string>;
 };
