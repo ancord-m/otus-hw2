@@ -43,7 +43,7 @@ int main(int argc, char const *argv[])
             ip_pool.push_back(split(v.at(0), '.'));
         }
         */
-
+        
         Parser parser;
 
         for(std::string line; std::getline(std::cin, line);)

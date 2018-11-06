@@ -1,11 +1,7 @@
 #include <string>
 #include <vector>
+#include "aliases.h"
 
-template<typename T>
-using DoubleVector = std::vector<std::vector<T> >;
-
-template<typename T>
-using Vector = std::vector<T>;
 
 class Parser {
 
@@ -18,6 +14,7 @@ class Parser {
 	DoubleVector<std::string> ip_pool;
 
 	public:
+		Parser();
 		auto captureTextBeforeFirstTab(std::string) -> std::string;
 		void splitIpAddressIntoPartsAndSave(std::string line);		
 		auto getIpPool(void) -> DoubleVector<std::string>;

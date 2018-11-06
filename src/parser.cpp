@@ -1,5 +1,12 @@
 #include "parser.h"
 
+static const int EXPECTED_IP_QUANTITY = 1000;
+
+Parser::Parser()
+{
+	ip_pool.reserve(EXPECTED_IP_QUANTITY);
+}
+
 auto Parser::captureTextBeforeFirstTab(std::string rawLine) -> std::string
 {
 	std::string::size_type start = 0;
