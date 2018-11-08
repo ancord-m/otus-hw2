@@ -16,7 +16,7 @@ set(SRC_LIST ${SRC_DIR}/parser.cpp
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-add_executable(ip_filter ${SRC_DIR}/ip_filter.cpp ${SRC_DIR}/parser.cpp)
+add_executable(ip_filter ${SRC_DIR}/ip_filter.cpp ${SRC_LIST})
 
 add_executable(ip_filter_tests ${TESTS_DIR}/ip_filter_tests.cpp ${SRC_LIST})
 

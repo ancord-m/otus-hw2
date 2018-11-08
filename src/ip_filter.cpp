@@ -64,6 +64,34 @@ int main(int argc, char const *argv[])
         }
         */
 
+
+
+        std::vector<std::string> ip1 = { "176", "100", "0", "0"};
+        std::vector<std::string> ip2 = { "176", "255", "255", "255"};
+        std::vector<std::string> temp;
+        std::vector<std::vector<std::string> > pool;
+
+        pool.push_back(ip1);
+        pool.push_back(ip2);
+
+
+        for(int i = ip1.size() - 1; i >= 0; i--) {
+        //for(int i = 0; i < ip1.size(); ++i) {
+        //  if(stoul(ip1[i], nullptr, 10) > stoul(ip2[i], nullptr, 10))  {
+            if(ip1[i] >= ip2[i]) {
+                //std::cout << ip1[i] << " " << ip2[i] << std::endl;
+                temp = ip1;
+            } else {
+                temp = ip2;
+            }
+        }
+
+        for(auto i: temp) {
+            if(i != temp[0]) std::cout << ".";
+            std::cout << i;
+        }
+
+
         Parser parser;
 
         for(std::string line; std::getline(std::cin, line);)
