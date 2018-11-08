@@ -31,6 +31,26 @@ std::vector<std::string> split(const std::string &str, char d)
     return r;
 }
 
+/*    char words[N][30], cur[30];
+    cout<<"Your words:\n";
+    for(i=0;i<N;i++)
+        cin.getline(words[i],30);
+    
+   
+    
+ 
+    for(i=0;i<N-1;i++)
+        for(j=i+1;j<N;j++)
+            if(strcmp(words[i],words[j])>0)
+            {   strcpy(cur,words[i]);
+                strcpy(words[i],words[j]);
+                strcpy(words[j],cur);
+            }
+    cout<<"Results:\n";
+    for(i=0;i<N;i++)
+        cout<<words[i]<<"\n";*/
+
+
 int main(int argc, char const *argv[])
 {
     try
@@ -43,7 +63,7 @@ int main(int argc, char const *argv[])
             ip_pool.push_back(split(v.at(0), '.'));
         }
         */
-        
+
         Parser parser;
 
         for(std::string line; std::getline(std::cin, line);)
