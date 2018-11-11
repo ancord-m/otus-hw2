@@ -5,31 +5,8 @@
 #include <vector>
 
 #include "parser.h"
-
-// ("",  '.') -> [""]
-// ("11", '.') -> ["11"]
-// ("..", '.') -> ["", "", ""]
-// ("11.", '.') -> ["11", ""]
-// (".11", '.') -> ["", "11"]
-// ("11.22", '.') -> ["11", "22"]
-std::vector<std::string> split(const std::string &str, char d)
-{
-    std::vector<std::string> r;
-
-    std::string::size_type start = 0;
-    std::string::size_type stop = str.find_first_of(d);
-    while(stop != std::string::npos)
-    {
-        r.push_back(str.substr(start, stop - start));
-
-        start = stop + 1;
-        stop = str.find_first_of(d, start);
-    }
-
-    r.push_back(str.substr(start));
-
-    return r;
-}
+#include "sorter.h"
+#include "printer.h"
 
 /*    char words[N][30], cur[30];
     cout<<"Your words:\n";
@@ -64,33 +41,20 @@ int main(int argc, char const *argv[])
         }
         */
 
-
-
-        std::vector<std::string> ip1 = { "176", "100", "0", "0"};
-        std::vector<std::string> ip2 = { "176", "255", "255", "255"};
-        std::vector<std::string> temp;
-        std::vector<std::vector<std::string> > pool;
-
-        pool.push_back(ip1);
-        pool.push_back(ip2);
-
-
-        for(int i = ip1.size() - 1; i >= 0; i--) {
-        //for(int i = 0; i < ip1.size(); ++i) {
-        //  if(stoul(ip1[i], nullptr, 10) > stoul(ip2[i], nullptr, 10))  {
-            if(ip1[i] >= ip2[i]) {
-                //std::cout << ip1[i] << " " << ip2[i] << std::endl;
-                temp = ip1;
-            } else {
-                temp = ip2;
-            }
-        }
-
-        for(auto i: temp) {
-            if(i != temp[0]) std::cout << ".";
-            std::cout << i;
-        }
-
+    /*std::vector<std::vector<std::string> > ip_pool =
+        {
+                { "85", "254", "10", "197" },
+                { "23", "240", "215", "189" },
+                { "1",  "29", "168", "152" },
+                { "185", "69", "186", "168" },
+                { "110", "152", "103", "161" },
+                { "68", "45", "152", "82" },
+                { "185", "182", "81", "131" },
+                { "114", "221", "179", "117" },
+                { "185", "89", "100", "249" },
+                { "46", "70", "113", "73" },
+                { "185", "69", "0", "38" }
+        };*/
 
         Parser parser;
 
@@ -100,12 +64,21 @@ int main(int argc, char const *argv[])
             parser.splitIpAddressIntoPartsAndSave(text);
         }
 
+
+
+        Sorter::sortInversely(parser.getIpPool());
+        Printer::printContentsOfIpPool(parser.getIpPool());
+
+
+
+/*      
+
         auto ip_pool = parser.getIpPool();
 
-
+*/
         // TODO reverse lexicographically sort
 
-        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+  /*      for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
         {
             for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
             {
@@ -117,7 +90,7 @@ int main(int argc, char const *argv[])
                 std::cout << *ip_part;
             }
             std::cout << std::endl;
-        }
+        } */
 
         // 222.173.235.246
         // 222.130.177.64

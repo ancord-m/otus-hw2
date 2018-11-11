@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(GotTabSeparatedString_CapturedAllBeforeFirstTab)
 		parser.captureTextBeforeFirstTab(line)
 	);
 }
-
+/*
 BOOST_AUTO_TEST_CASE(IpCaptured_Splitted_And_Saved)
 {
 	auto line = "127.0.0.1\t567\t10\n";
@@ -63,12 +63,12 @@ BOOST_AUTO_TEST_CASE(IpCaptured_Splitted_And_Saved)
 	BOOST_CHECK_EQUAL(  "0", parser.getIpPool().at(0)[1]);
 	BOOST_CHECK_EQUAL(  "0", parser.getIpPool().at(0)[2]);
 	BOOST_CHECK_EQUAL(  "1", parser.getIpPool().at(0)[3]);
-}
+}*/
 
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_SUITE(SorterFunctions)
-
+/*
 BOOST_AUTO_TEST_CASE(IPs_WithNonZeroFirstByte_SortedReversly)
 {
 	int b1     = 10;
@@ -89,6 +89,6 @@ BOOST_AUTO_TEST_CASE(IPs_WithNonZeroFirstByte_SortedReversly)
 	}
 
 
-}
+}*/
 
 BOOST_AUTO_TEST_SUITE_END()

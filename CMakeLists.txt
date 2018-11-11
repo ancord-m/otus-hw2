@@ -12,6 +12,7 @@ set(SRC_DIR src)
 
 set(SRC_LIST ${SRC_DIR}/parser.cpp
 			 ${SRC_DIR}/sorter.cpp
+			 ${SRC_DIR}/printer.cpp
    )
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
