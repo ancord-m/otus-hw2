@@ -41,28 +41,3 @@ auto Sorter::getSortedIpPool(void) -> DoubleVector<std::string> *
 {
 	return &ip_pool_copy;
 }
-
-auto Sorter::is_a_goes_before_b_one_leading_sub_ip(Vector<std::string> a, Vector<std::string> b) -> bool
-{
-	bool a_goes_before_b = false;
-	
-	unsigned int subA, subB;
-	//for(int i = a.size() - 1; i >= 0; i--) {
-	for(int i = 0; i < a.size(); ++i) {
-//		std::cout << a[i] << " " << b[i] << std::endl;
-		subA = stoul(a[i], nullptr, 10);
-		subB = stoul(b[i], nullptr, 10);
-	  
-	  	if(subA == subB) continue;
-
-	  	if(subA > subB)  {
-			a_goes_before_b = true;
-			break;
-		} else {
-			a_goes_before_b = false;
-			break;
-		}
-	}
-
-	return a_goes_before_b;
-}

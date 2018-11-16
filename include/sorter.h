@@ -9,7 +9,6 @@ class Sorter
 	Parser *parser;
 	DoubleVector<std::string> ip_pool_copy;
 	static auto is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) -> bool;
-	auto is_a_goes_before_b_one_leading_sub_ip(Vector<std::string> a, Vector<std::string> b) -> bool;
 	
 public:
 	Sorter(Parser *p) : parser(p) {};
