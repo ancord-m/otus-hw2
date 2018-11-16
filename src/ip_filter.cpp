@@ -57,6 +57,8 @@ int main(int argc, char const *argv[])
         };*/
 
         Parser parser;
+        Sorter sorter(&parser);
+        Printer printer;
 
         for(std::string line; std::getline(std::cin, line);)
         {
@@ -65,10 +67,11 @@ int main(int argc, char const *argv[])
         }
 
 
+        sorter.sortInversely_AllIPs();
+        printer.printContentsOfIpPool(sorter.getSortedIpPool());
 
-        Sorter::sortInversely(parser.getIpPool());
-        Printer::printContentsOfIpPool(parser.getIpPool());
 
+        sorter.sortInversely_IPs_startingWith(1);
 
 
 /*      

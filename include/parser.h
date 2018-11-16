@@ -1,7 +1,9 @@
+#ifndef PARSER_H_
+#define PARSER_H_
+
 #include <string>
 #include <vector>
 #include "aliases.h"
-
 
 class Parser {
 
@@ -17,5 +19,7 @@ class Parser {
 		Parser();
 		auto captureTextBeforeFirstTab(std::string) -> std::string;
 		void splitIpAddressIntoPartsAndSave(std::string line);		
-		auto getIpPool(void) -> DoubleVector<std::string> *;
+		auto getIpPool(void) -> DoubleVector<std::string>;
 };
+
+#endif

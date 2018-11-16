@@ -2,34 +2,29 @@
 #include <iostream>
 #include <algorithm>
 
-unsigned int Sorter::first_leading_ip_part;
-
-void Sorter::sortInversely(DoubleVector<std::string> *ip_pool)
-{
-	std::sort(ip_pool->begin(), ip_pool->end(), is_a_goes_before_b);
+void Sorter::sortInversely_AllIPs(void)
+{	
+	ip_pool_copy = parser->getIpPool();
+	std::sort(ip_pool_copy.begin(), ip_pool_copy.end(), is_a_goes_before_b);
 }
 
-
-void sortInversely_FirstGoIPsStartingWith(DoubleVector<std::string> *ip_pool, unsigned int leading_sub_ip)
+void Sorter::sortInversely_IPs_startingWith(unsigned int)
 {
-	Sorter::first_leading_ip_part = leading_sub_ip;
-	std::sort(ip_pool->begin(), ip_pool->end(), is_a_goes_before_b_one_leading_sub_ip);
+
 }
 
 auto Sorter::is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) -> bool
 {
-	bool a_goes_before_b = false;
-	
-	unsigned int subA, subB;
-	//for(int i = a.size() - 1; i >= 0; i--) {
-	for(int i = 0; i < a.size(); ++i) {
-//		std::cout << a[i] << " " << b[i] << std::endl;
-		subA = stoul(a[i], nullptr, 10);
-		subB = stoul(b[i], nullptr, 10);
-	  
-	  	if(subA == subB) continue;
+	bool a_goes_before_b = false;	
+	unsigned int ip_part_form_a, ip_part_form_b;
 
-	  	if(subA > subB)  {
+	for(int i = 0; i < a.size(); ++i) {
+		ip_part_form_a = stoul(a[i], nullptr, 10);
+		ip_part_form_b = stoul(b[i], nullptr, 10);
+	  
+	  	if(ip_part_form_a == ip_part_form_b) continue;
+
+	  	if(ip_part_form_a > ip_part_form_b)  {
 			a_goes_before_b = true;
 			break;
 		} else {
@@ -41,6 +36,11 @@ auto Sorter::is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) ->
 	return a_goes_before_b;
 }
 
+
+auto Sorter::getSortedIpPool(void) -> DoubleVector<std::string> *
+{
+	return &ip_pool_copy;
+}
 
 auto Sorter::is_a_goes_before_b_one_leading_sub_ip(Vector<std::string> a, Vector<std::string> b) -> bool
 {

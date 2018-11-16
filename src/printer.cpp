@@ -1,7 +1,7 @@
 #include "printer.h"
 #include <iostream>
 
-void Printer::printContentsOfIpPool(DoubleVector<std::string> *ip_pool) 
+void Printer::printContentsOfIpPool(const DoubleVector<std::string> *ip_pool) 
 {
 	for(auto ip : *ip_pool) {
 		for(auto ip_part : ip) {

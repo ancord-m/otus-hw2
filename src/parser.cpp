@@ -34,7 +34,7 @@ void Parser::splitIpAddressIntoPartsAndSave(std::string ip)
     ip_pool.push_back(splitedIp);
 }
 
-auto Parser::getIpPool(void) -> DoubleVector<std::string> *
+auto Parser::getIpPool(void) -> DoubleVector<std::string>
 {
-	return &ip_pool;
+	return ip_pool;
 }
