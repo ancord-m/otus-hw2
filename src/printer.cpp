@@ -3,10 +3,10 @@
 
 void Printer::printContentsOfIpPool(const DoubleVector<std::string> *ip_pool) 
 {
-	for(auto ip : *ip_pool) {
-		for(auto ip_part : ip) {
-			if(ip_part != ip[0]) std::cout << '.'; //fixme!!!!
-			std::cout << ip_part;
+	for(auto pool_itr = ip_pool->cbegin(); pool_itr != ip_pool->cend(); ++pool_itr) {
+		for(auto ip_part_itr = pool_itr->cbegin(); ip_part_itr != pool_itr->cend(); ++ip_part_itr) {
+			if(ip_part_itr != pool_itr->cbegin()) std::cout << '.'; //fixme!!!!
+			std::cout << *ip_part_itr;
 		}
 		std::cout << std::endl;
 	}

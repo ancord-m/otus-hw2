@@ -19,7 +19,7 @@ class Parser {
 		Parser();
 		auto captureTextBeforeFirstTab(std::string) -> std::string;
 		void splitIpAddressIntoPartsAndSave(std::string line);		
-		auto getIpPool(void) -> DoubleVector<std::string>;
+		auto getIpPool(void) -> DoubleVector<std::string> *;
 };
 
 #endif

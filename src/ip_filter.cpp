@@ -41,7 +41,7 @@ int main(int argc, char const *argv[])
         }
         */
 
-    /*std::vector<std::vector<std::string> > ip_pool =
+  /*  std::vector<std::vector<std::string> > ip_pool =
         {
                 { "85", "254", "10", "197" },
                 { "23", "240", "215", "189" },
@@ -60,18 +60,20 @@ int main(int argc, char const *argv[])
         Sorter sorter(&parser);
         Printer printer;
 
-        for(std::string line; std::getline(std::cin, line);)
+        for(std::string line; std::getline(std::cin, line); )
         {
             auto text = parser.captureTextBeforeFirstTab(line);
             parser.splitIpAddressIntoPartsAndSave(text);
         }
 
 
-        sorter.sortInversely_AllIPs();
-        printer.printContentsOfIpPool(sorter.getSortedIpPool());
 
+       sorter.sortInversely_AllIPs();
+      printer.printContentsOfIpPool(sorter.getSortedIpPool());
+      
+      
 
-        sorter.sortInversely_IPs_startingWith(1);
+     //   sorter.sortInversely_IPs_startingWith(1);
 
 
 /*      

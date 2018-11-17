@@ -2,15 +2,28 @@
 #include <iostream>
 #include <algorithm>
 
-void Sorter::sortInversely_AllIPs(void)
-{	
-	ip_pool_copy = parser->getIpPool();
-	std::sort(ip_pool_copy.begin(), ip_pool_copy.end(), is_a_goes_before_b);
+void Sorter::makeIpPoolCopy(void)
+{
+//	ip_pool_copy = parser->getIpPool();
 }
 
-void Sorter::sortInversely_IPs_startingWith(unsigned int)
+void Sorter::sortInverslely(void)
 {
+	std::sort(filtered_pool.begin(), filtered_pool.end(), is_a_goes_before_b);
+	
+}
 
+void Sorter::sortInversely_AllIPs(void)
+{	
+	filter.leaveIPs_AsIs();
+	sortInverslely();
+}
+
+void Sorter::sortInversely_IPs_startingWith(unsigned int leading_ip_part)
+{
+	makeIpPoolCopy();
+	filter.leaveIPs_startingWith(leading_ip_part);
+	sortInverslely();	
 }
 
 auto Sorter::is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) -> bool
@@ -39,5 +52,5 @@ auto Sorter::is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) ->
 
 auto Sorter::getSortedIpPool(void) -> DoubleVector<std::string> *
 {
-	return &ip_pool_copy;
+	return &filtered_pool;
 }
