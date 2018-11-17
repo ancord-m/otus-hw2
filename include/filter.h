@@ -7,6 +7,16 @@ class Filter
 {
 	const DoubleVector<std::string> *original_pool;
 	DoubleVector<std::string> *filtered_pool;
+
+	static std::string first_ip_part;
+	static std::string second_ip_part;
+	static std::string any_part;
+
+	void prepareFilteredPool(void);
+	static bool starting_with_one_element(Vector<std::string> ip);
+	static bool starting_with_two_element(Vector<std::string> ip);
+	static bool containing_one_element(Vector<std::string> ip);
+
 public:
 	Filter(const DoubleVector<std::string> *op, DoubleVector<std::string> *fp) 
 		: original_pool(op), filtered_pool(fp) {};

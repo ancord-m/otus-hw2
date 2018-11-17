@@ -21,6 +21,8 @@ public:
 	unsigned int first_leading_ip_part;
 	void sortInversely_AllIPs(void);
 	void sortInversely_IPs_startingWith(unsigned int);
+	void sortInversely_IPs_startingWith(unsigned int, unsigned int);
+	void sortInversely_IPs_containing(unsigned int);
 	auto getSortedIpPool(void) -> DoubleVector<std::string> *;
 };
 

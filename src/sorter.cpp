@@ -21,9 +21,20 @@ void Sorter::sortInversely_AllIPs(void)
 
 void Sorter::sortInversely_IPs_startingWith(unsigned int leading_ip_part)
 {
-	makeIpPoolCopy();
 	filter.leaveIPs_startingWith(leading_ip_part);
 	sortInverslely();	
+}
+
+void Sorter::sortInversely_IPs_startingWith(unsigned int first_ip_part, unsigned int second_ip_part)
+{
+	filter.leaveIPs_startingWith(first_ip_part, second_ip_part);
+	sortInverslely();	
+}
+
+void Sorter::sortInversely_IPs_containing(unsigned int ip_part)
+{
+	filter.leaveIPs_containing(ip_part);
+	sortInverslely();
 }
 
 auto Sorter::is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) -> bool
