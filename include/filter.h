@@ -11,11 +11,12 @@ class Filter
 	static std::string first_ip_part;
 	static std::string second_ip_part;
 	static std::string any_part;
-
-	void prepareFilteredPool(void);
+	
 	static bool starting_with_one_element(Vector<std::string> ip);
 	static bool starting_with_two_element(Vector<std::string> ip);
 	static bool containing_one_element(Vector<std::string> ip);
+	
+	void prepareFilteredPool(void);
 
 public:
 	Filter(const DoubleVector<std::string> *op, DoubleVector<std::string> *fp) 

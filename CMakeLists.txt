@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(ENV{TRAVIS_BUILD_NUMBER} 1)
-
 project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 set(INCLUDE_DIR include)
@@ -41,10 +39,21 @@ target_link_libraries(ip_filter_tests
 	${Boost_LIBRARIES}
 )
 
-message(STATUS "My include directories:")
-
-get_target_property(IN_DIR ip_filter_tests INCLUDE_DIRECTORIES)
-
-message(STATUS ${IN_DIR})
-
 enable_testing()
+
+install(TARGETS ip_filter RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
+
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+
+set(CPACK_PACKAGE_CONTACT leon8005@gmail.com)
+
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+
+include(CPack)
+
+add_test(GotEmptyString_NothingFound ip_filter_tests)
+add_test(GotTabSeparatedString_CapturedAllBeforeFirstTab ip_filter_tests)
