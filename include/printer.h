@@ -5,7 +5,7 @@
 
 class Printer {
 public:
-	static void printContentsOfIpPool(const DoubleVector<std::string> *);
+	static void printContentsOfIpPool(const IpAddressPool<unsigned int> *);
 };
 
 #endif

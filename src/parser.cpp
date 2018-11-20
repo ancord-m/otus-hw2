@@ -18,7 +18,7 @@ auto Parser::captureTextBeforeFirstTab(std::string rawLine) -> std::string
 
 void Parser::splitIpAddressIntoPartsAndSave(std::string ip)
 {
-	Vector<std::string> splitedIp;
+	IpAddress<unsigned int> splitedIp;
 
 	std::string::size_type start = 0;
     std::string::size_type stop = ip.find_first_of(DOT);
@@ -34,7 +34,7 @@ void Parser::splitIpAddressIntoPartsAndSave(std::string ip)
     ip_pool.push_back(splitedIp);
 }
 
-auto Parser::getIpPool(void) -> DoubleVector<std::string> *
+auto Parser::getIpPool(void) -> IpAddressPool<unsigned int> *
 {
 	return &ip_pool;
 }

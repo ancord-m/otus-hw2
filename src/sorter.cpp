@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
-auto Sorter::is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) -> bool
+auto Sorter::is_a_goes_before_b(IpAddress<unsigned int> a, IpAddress<unsigned int> b) -> bool
 {
 	bool a_goes_before_b = false;	
 	unsigned int ip_part_form_a, ip_part_form_b;
@@ -55,7 +55,7 @@ void Sorter::sortInversely_IPs_containing(unsigned int ip_part)
 	sortInverslely();
 }
 
-auto Sorter::getSortedIpPool(void) -> DoubleVector<std::string> *
+auto Sorter::getSortedIpPool(void) -> IpAddressPool<unsigned int> **
 {
 	return &filtered_pool;
 }

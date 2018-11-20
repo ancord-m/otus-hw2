@@ -5,9 +5,9 @@
 #include <vector>
 
 template<typename T>
-using DoubleVector = std::vector<std::vector<T> >;
+using IpAddressPool = std::vector<std::vector<T> >;
 
 template<typename T>
-using Vector = std::vector<T>;
+using IpAddress = std::vector<T>;
 
 #endif

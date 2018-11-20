@@ -7,9 +7,9 @@
 
 class IpPoolGenerator 
 {
-	auto generateIP(int b1, int b2, int b3, int b4) -> Vector<std::string>
+	auto generateIP(int b1, int b2, int b3, int b4) -> IpAddress<unsigned int> *
 	{
-		Vector<std::string> result;
+		IpAddress<unsigned int> result;
 
 		result.push_back(std::to_string(b1));
 		result.push_back(std::to_string(b2));
@@ -20,7 +20,7 @@ class IpPoolGenerator
 	}
 
 public:
-	DoubleVector<std::string> ip_pool;
+	IpAddressPool<unsigned int> ip_pool;
 
 	void generateIP_And_PutIntoPool(int b1, int b2, int b3, int b4)
 	{

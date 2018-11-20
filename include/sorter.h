@@ -8,10 +8,10 @@
 class Sorter 
 {
 	Parser *parser;
-	DoubleVector<std::string> filtered_pool;
+	IpAddressPool<unsigned int> filtered_pool;
 	Filter filter{ parser->getIpPool(), &filtered_pool };
 
-	static auto is_a_goes_before_b(Vector<std::string> a, Vector<std::string> b) -> bool;
+	static auto is_a_goes_before_b(IpAddress<unsigned int> a, IpAddress<unsigned int> b) -> bool;
 
 	void sortInverslely(void);
 	
@@ -23,7 +23,7 @@ public:
 	void sortInversely_IPs_startingWith(unsigned int);
 	void sortInversely_IPs_startingWith(unsigned int, unsigned int);
 	void sortInversely_IPs_containing(unsigned int);
-	auto getSortedIpPool(void) -> DoubleVector<std::string> *;
+	auto getSortedIpPool(void) -> IpAddressPool<unsigned int> **;
 };
 
 #endif

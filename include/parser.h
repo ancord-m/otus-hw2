@@ -13,13 +13,13 @@ class Parser {
 		TAB = '\t'
 	};
 
-	DoubleVector<std::string> ip_pool;
+	IpAddressPool<unsigned int> ip_pool;
 
 	public:
 		Parser();
 		auto captureTextBeforeFirstTab(std::string) -> std::string;
 		void splitIpAddressIntoPartsAndSave(std::string line);		
-		auto getIpPool(void) -> DoubleVector<std::string> *;
+		auto getIpPool(void) -> IpAddressPool<unsigned int> *;
 };
 
 #endif
