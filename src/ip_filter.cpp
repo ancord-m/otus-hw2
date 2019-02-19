@@ -19,13 +19,14 @@ int main(int argc, char const *argv[])
     sorter.sortInversely_AllIPs();
     printer.printContentsOfIpPool(sorter.getSortedIpPool());
 
-    sorter.sortInversely_IPs_startingWith(1);
+    //sorter.sortInversely_IPs_startingWith(1);
+    filter
     printer.printContentsOfIpPool(sorter.getSortedIpPool());
 
-    sorter.sortInversely_IPs_startingWith(46, 70);
+    //sorter.sortInversely_IPs_startingWith(46, 70);
     printer.printContentsOfIpPool(sorter.getSortedIpPool());
 
-    sorter.sortInversely_IPs_containing(46);
+    //sorter.sortInversely_IPs_containing(46);
     printer.printContentsOfIpPool(sorter.getSortedIpPool());
 
     return 0;

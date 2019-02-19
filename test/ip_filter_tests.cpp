@@ -7,15 +7,15 @@
 
 class IpPoolGenerator 
 {
-	auto generateIP(int b1, int b2, int b3, int b4) -> IpAddress<unsigned int> *
+	auto generateIP(int b1, int b2, int b3, int b4) -> IpAddress<unsigned int>
 	{
 		IpAddress<unsigned int> result;
 
-		result.push_back(std::to_string(b1));
-		result.push_back(std::to_string(b2));
-		result.push_back(std::to_string(b3));
-		result.push_back(std::to_string(b4));
-		
+		result.push_back(b1);
+		result.push_back(b2);
+		result.push_back(b3);
+		result.push_back(b4);
+
 		return result;
 	}
 

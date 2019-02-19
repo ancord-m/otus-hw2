@@ -7,16 +7,20 @@ auto Sorter::is_a_goes_before_b(IpAddress<unsigned int> a, IpAddress<unsigned in
 	bool a_goes_before_b = false;	
 	unsigned int ip_part_form_a, ip_part_form_b;
 
-	for(int i = 0; i < a.size(); ++i) {
+	for(int i = 0; i < a.size(); ++i) 
+	{
 		ip_part_form_a = stoul(a[i], nullptr, 10);
 		ip_part_form_b = stoul(b[i], nullptr, 10);
 	  
 	  	if(ip_part_form_a == ip_part_form_b) continue;
 
-	  	if(ip_part_form_a > ip_part_form_b)  {
+	  	if(ip_part_form_a > ip_part_form_b) 
+	  	{
 			a_goes_before_b = true;
 			break;
-		} else {
+		}
+		else
+		{
 			a_goes_before_b = false;
 			break;
 		}
@@ -27,8 +31,7 @@ auto Sorter::is_a_goes_before_b(IpAddress<unsigned int> a, IpAddress<unsigned in
 
 void Sorter::sortInverslely(void)
 {
-	std::sort(filtered_pool.begin(), filtered_pool.end(), is_a_goes_before_b);
-	
+	std::sort(filtered_pool.begin(), filtered_pool.end(), is_a_goes_before_b);	
 }
 
 void Sorter::sortInversely_AllIPs(void)

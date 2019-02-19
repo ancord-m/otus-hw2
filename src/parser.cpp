@@ -24,12 +24,12 @@ void Parser::splitIpAddressIntoPartsAndSave(std::string ip)
     std::string::size_type stop = ip.find_first_of(DOT);
     while(stop != std::string::npos)
     {
-        splitedIp.push_back(ip.substr(start, stop - start));
+        splitedIp.push_back(atoi(ip.substr(start, stop - start).c_str()));
         start = stop + 1;
         stop = ip.find_first_of(DOT, start);
     }
 
-    splitedIp.push_back(ip.substr(start));
+    splitedIp.push_back(atoi(ip.substr(start).c_str()));
 
     ip_pool.push_back(splitedIp);
 }
