@@ -7,23 +7,15 @@
 
 class Sorter 
 {
-	Parser *parser;
-	IpAddressPool<unsigned int> filtered_pool;
-	Filter filter{ parser->getIpPool(), &filtered_pool };
-
-	static auto is_a_goes_before_b(IpAddress<unsigned int> a, IpAddress<unsigned int> b) -> bool;
-
-	void sortInverslely(void);
+	IpAddressPool<unsigned int> sorted_pool;
 	
 public:
-	Sorter(Parser *p) : parser(p) {};
-	~Sorter() = default;
+	Sorter() = default;
+   ~Sorter() = default;
 
-	void sortInversely_AllIPs(void);
-	void sortInversely_IPs_startingWith(unsigned int);
-	void sortInversely_IPs_startingWith(unsigned int, unsigned int);
-	void sortInversely_IPs_containing(unsigned int);
-	auto getSortedIpPool(void) -> IpAddressPool<unsigned int> **;
+	void sort_inversely_ip_pool(const IpAddressPool<unsigned int> *original_pool);
+	auto get_inversley_sorted_ip_pool(void) -> const IpAddressPool<unsigned int> *;
+	
 };
 
 #endif

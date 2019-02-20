@@ -34,7 +34,7 @@ void Parser::splitIpAddressIntoPartsAndSave(std::string ip)
     ip_pool.push_back(splitedIp);
 }
 
-auto Parser::getIpPool(void) -> IpAddressPool<unsigned int> *
+auto Parser::get_raw_ip_pool(void) -> const IpAddressPool<unsigned int> *
 {
 	return &ip_pool;
 }

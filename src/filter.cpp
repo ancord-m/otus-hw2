@@ -6,26 +6,47 @@ std::string Filter::first_ip_part 	= "";
 std::string Filter::second_ip_part 	= "";
 std::string Filter::any_part		= "";
 
+/*template <typename T>
+auto Filter::leave_ips_starting_with(
+		const IpAddressPool<unsigned int> *ip_pool,
+		T ip_part
+	) -> const IpAddressPool<unsigned int> *
+{
+	std::cout << ip_part << ' ';
+}
+
+template <typename T, typename... Args>
+auto Filter::leave_ips_starting_with(
+		const IpAddressPool<unsigned int> *ip_pool,
+		T ip_part,
+		Args... args
+	) -> const IpAddressPool<unsigned int> *
+{
+	std::cout << ip_part << ' ';
+	leave_ips_starting_with(ip_pool, args...);
+}
+*/
+
 bool Filter::starting_with_one_element(IpAddress<unsigned int> ip)
 {
-	if(first_ip_part == ip.at(0))
-		return true;
+	/*if(first_ip_part == ip.at(0))
+		return true;*/
 
 	return false;
 }
 
 bool Filter::starting_with_two_element(IpAddress<unsigned int> ip)
 {
-	if(first_ip_part == ip.at(0) && second_ip_part == ip.at(1))
-		return true;
+	/*if(first_ip_part == ip.at(0) && second_ip_part == ip.at(1))
+		return true;*/
 
 	return false;
 }
 
 bool Filter::containing_one_element(IpAddress<unsigned int> ip)
 {
-	for(auto ip_part : ip)
-		if(any_part == ip_part) return true;
+	/*for(auto ip_part : ip)
+		if(any_part == ip_part) return true;*/
 
 	return false;
 }

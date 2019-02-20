@@ -2,11 +2,13 @@
 #define FILTER_H_
 
 #include "aliases.h"
+#include <iostream>
+
 
 class Filter 
 {
 	const IpAddressPool<unsigned int> *original_pool;
-	IpAddressPool<unsigned int> *filtered_pool;
+	IpAddressPool<unsigned int> filtered_pool;
 
 	static std::string first_ip_part;
 	static std::string second_ip_part;
@@ -19,9 +21,27 @@ class Filter
 	void prepareFilteredPool(void);
 
 public:
-	Filter(const IpAddressPool<unsigned int> *op, IpAddressPool<unsigned int> *fp) 
-		: original_pool(op), filtered_pool(fp) {};
-	~Filter() = default;
+	Filter() = default;
+   ~Filter() = default;
+
+   template<typename T>
+   auto leave_ips_starting_with(
+   			const IpAddressPool<unsigned int> *ip_pool,
+   			T ip_part
+   		) -> const IpAddressPool<unsigned int> *
+   {
+   	
+   }
+
+   template<typename T, typename... Args>
+   auto leave_ips_starting_with(
+	   		const IpAddressPool<unsigned int> *ip_pool,
+	   		T ip_part,
+	   		Args... args
+   		) -> const IpAddressPool<unsigned int> *
+   {
+		
+   }
 
 	void leaveIPs_AsIs(void);
 	void leaveIPs_startingWith(unsigned int);

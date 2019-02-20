@@ -17,9 +17,11 @@ class Parser {
 
 	public:
 		Parser();
+	   ~Parser() = default;
+	   
 		auto captureTextBeforeFirstTab(std::string) -> std::string;
 		void splitIpAddressIntoPartsAndSave(std::string line);		
-		auto getIpPool(void) -> IpAddressPool<unsigned int> *;
+		auto get_raw_ip_pool(void) -> const IpAddressPool<unsigned int> *;
 };
 
 #endif
