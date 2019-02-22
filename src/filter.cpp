@@ -1,6 +1,7 @@
 #include <iostream>
-#include "filter.h"
 #include <algorithm>
+
+#include "filter.h"
 
 std::string Filter::first_ip_part 	= "";
 std::string Filter::second_ip_part 	= "";
@@ -26,6 +27,14 @@ auto Filter::leave_ips_starting_with(
 	leave_ips_starting_with(ip_pool, args...);
 }
 */
+
+void Filter::set_ip_pool_to_be_filtered(const IpAddressPool<unsigned int> *ip_pool)
+{
+	original_pool = ip_pool;
+}
+
+
+
 
 bool Filter::starting_with_one_element(IpAddress<unsigned int> ip)
 {
@@ -53,14 +62,14 @@ bool Filter::containing_one_element(IpAddress<unsigned int> ip)
 
 void Filter::prepareFilteredPool(void)
 {
-	filtered_pool->clear();
-	filtered_pool->resize(original_pool->size());
+	filtered_pool.clear();
+	filtered_pool.resize(original_pool->size());
 }
 
 void Filter::leaveIPs_AsIs(void)
 {
 	prepareFilteredPool();
-	std::copy(original_pool->begin(), original_pool->end(), filtered_pool->begin());
+	std::copy(original_pool->begin(), original_pool->end(), filtered_pool.begin());
 }
 
 void Filter::leaveIPs_startingWith(unsigned int ip_part)
@@ -68,8 +77,8 @@ void Filter::leaveIPs_startingWith(unsigned int ip_part)
 	first_ip_part = std::to_string(ip_part);
 
 	prepareFilteredPool();
-	auto end = std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool->begin(), starting_with_one_element);
-	filtered_pool->resize(std::distance(filtered_pool->begin(), end));
+	auto end = std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool.begin(), starting_with_one_element);
+	filtered_pool.resize(std::distance(filtered_pool.begin(), end));
 }
 
 void Filter::leaveIPs_startingWith(unsigned int f_ip_part, unsigned int s_ip_part)
@@ -78,8 +87,8 @@ void Filter::leaveIPs_startingWith(unsigned int f_ip_part, unsigned int s_ip_par
 	second_ip_part = std::to_string(s_ip_part);
 
 	prepareFilteredPool();
-	auto end = std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool->begin(), starting_with_two_element);
-	filtered_pool->resize(std::distance(filtered_pool->begin(), end));
+	auto end = std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool.begin(), starting_with_two_element);
+	filtered_pool.resize(std::distance(filtered_pool.begin(), end));
 }
 
 void Filter::leaveIPs_containing(unsigned int ip_part)
@@ -87,6 +96,6 @@ void Filter::leaveIPs_containing(unsigned int ip_part)
 	any_part = std::to_string(ip_part);
 
 	prepareFilteredPool();
-	auto end = std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool->begin(), containing_one_element);
-	filtered_pool->resize(std::distance(filtered_pool->begin(), end));
+	auto end = std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool.begin(), containing_one_element);
+	filtered_pool.resize(std::distance(filtered_pool.begin(), end));
 }

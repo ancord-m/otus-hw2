@@ -24,24 +24,30 @@ public:
 	Filter() = default;
    ~Filter() = default;
 
-   template<typename T>
-   auto leave_ips_starting_with(
-   			const IpAddressPool<unsigned int> *ip_pool,
-   			T ip_part
-   		) -> const IpAddressPool<unsigned int> *
-   {
-   	
-   }
-
-   template<typename T, typename... Args>
-   auto leave_ips_starting_with(
-	   		const IpAddressPool<unsigned int> *ip_pool,
-	   		T ip_part,
-	   		Args... args
-   		) -> const IpAddressPool<unsigned int> *
-   {
+    //почему сигнатуру неполучается отсавить в заголовочном файле, 
+    //а реализацию переместить в cpp? ошибка линковки!!!
+	template<typename T>
+	auto leave_ips_starting_with(T ip_part) -> const IpAddressPool<unsigned int> *
+	{
 		
-   }
+	}
+
+	template<typename T, typename... Args>
+	auto leave_ips_starting_with(T ip_part, Args... args) -> const IpAddressPool<unsigned int> *
+	{
+		auto end = 
+			std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool.begin(), starting_with_one_element);
+		filtered_pool.resize(std::distance(filtered_pool.begin(), end));
+	}
+
+	template<typename T>
+	auto leave_ips_containing(T ip_part) -> const IpAddressPool<unsigned int> *
+	{
+		prepareFilteredPool();
+	}
+
+
+    void set_ip_pool_to_be_filtered(const IpAddressPool<unsigned int> *ip_pool);
 
 	void leaveIPs_AsIs(void);
 	void leaveIPs_startingWith(unsigned int);

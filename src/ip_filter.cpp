@@ -18,27 +18,13 @@ int main(int argc, char const *argv[])
 
     sorter.sort_inversely_ip_pool(parser.get_raw_ip_pool());
 
- /*   Printer::print_ip_pool(
-        sorter.get_inversley_sorted_ip_pool()
-    );*/
+    filter.set_ip_pool_to_be_filtered(sorter.get_inversley_sorted_ip_pool());
 
-    filter.leave_ips_starting_with(sorter.get_inversley_sorted_ip_pool(), 45, 44, 56,77);
+    Printer::print_ip_pool(filter.leave_ips_starting_with(1));
+    
+    Printer::print_ip_pool(filter.leave_ips_starting_with(46, 70));
 
-   /* Printer::print_ip_pool(
-        filter.
-    );
-*/
-
- //   printer.printContentsOfIpPool(filter.);
-
-    //sorter.sortInversely_IPs_startingWith(1);
-    //printer.printContentsOfIpPool(sorter.getSortedIpPool());
-
-    //sorter.sortInversely_IPs_startingWith(46, 70);
-    //printer.printContentsOfIpPool(sorter.getSortedIpPool());
-
-    //sorter.sortInversely_IPs_containing(46);
-    //printer.printContentsOfIpPool(sorter.getSortedIpPool());
+    Printer::print_ip_pool(filter.leave_ips_containing(46));
 
     return 0;
 }
