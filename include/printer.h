@@ -5,7 +5,7 @@
 
 class Printer {
 public:
-	static void print_ip_pool(const IpAddressPool<unsigned int> *);
+	static void print_ip(const IpAddress<unsigned int> *);
 };
 
 #endif

@@ -1,8 +1,12 @@
 #ifndef FILTER_H_
 #define FILTER_H_
 
-#include "aliases.h"
 #include <iostream>
+#include <algorithm>
+
+#include "aliases.h"
+#include "printer.h"
+
 
 
 class Filter 
@@ -24,29 +28,29 @@ public:
 	Filter() = default;
    ~Filter() = default;
 
-    //почему сигнатуру неполучается отсавить в заголовочном файле, 
+    //почему сигнатуру не получается оставить в заголовочном файле, 
     //а реализацию переместить в cpp? ошибка линковки!!!
 	template<typename T>
-	auto leave_ips_starting_with(T ip_part) -> const IpAddressPool<unsigned int> *
+	void show_ips_starting_with(T ip_part)
 	{
 		
 	}
 
 	template<typename T, typename... Args>
-	auto leave_ips_starting_with(T ip_part, Args... args) -> const IpAddressPool<unsigned int> *
+	void show_ips_starting_with(T ip_part, Args... args)
 	{
-		auto end = 
-			std::copy_if(original_pool->begin(), original_pool->end(), filtered_pool.begin(), starting_with_one_element);
-		filtered_pool.resize(std::distance(filtered_pool.begin(), end));
+		
 	}
 
 	template<typename T>
-	auto leave_ips_containing(T ip_part) -> const IpAddressPool<unsigned int> *
+	void show_ips_containing(T ip_part)
 	{
-		prepareFilteredPool();
+		for(auto ip : *original_pool)
+		{
+			if(std::find(ip.begin(), ip.end(), ip_part) != ip.end())			
+				Printer::print_ip(&ip);
+		}	
 	}
-
-
     void set_ip_pool_to_be_filtered(const IpAddressPool<unsigned int> *ip_pool);
 
 	void leaveIPs_AsIs(void);

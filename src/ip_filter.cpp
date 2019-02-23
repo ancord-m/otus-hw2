@@ -20,11 +20,9 @@ int main(int argc, char const *argv[])
 
     filter.set_ip_pool_to_be_filtered(sorter.get_inversley_sorted_ip_pool());
 
-    Printer::print_ip_pool(filter.leave_ips_starting_with(1));
-    
-    Printer::print_ip_pool(filter.leave_ips_starting_with(46, 70));
-
-    Printer::print_ip_pool(filter.leave_ips_containing(46));
+    filter.show_ips_starting_with(1);
+    filter.show_ips_starting_with(46, 70);
+    filter.show_ips_containing(46);
 
     return 0;
 }
