@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-#project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 set(INCLUDE_DIR include)
 
