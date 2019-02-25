@@ -20,6 +20,7 @@ int main(int argc, char const *argv[])
 
     filter.set_ip_pool_to_be_filtered(sorter.get_inversley_sorted_ip_pool());
 
+    filter.show_ips_as_is();
     filter.show_ips_starting_with(1);
     filter.show_ips_starting_with(46, 70);
     filter.show_ips_containing(46);
