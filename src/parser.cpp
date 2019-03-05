@@ -7,7 +7,7 @@ Parser::Parser()
 	ip_pool.reserve(EXPECTED_IP_QUANTITY);
 }
 
-auto Parser::captureTextBeforeFirstTab(std::string rawLine) -> std::string
+std::string Parser::captureTextBeforeFirstTab(std::string rawLine)
 {
 	std::string::size_type start = 0;
     std::string::size_type stop = rawLine.find_first_of(TAB);
@@ -18,7 +18,7 @@ auto Parser::captureTextBeforeFirstTab(std::string rawLine) -> std::string
 
 void Parser::splitIpAddressIntoPartsAndSave(std::string ip)
 {
-	IpAddress<unsigned int> splitedIp;
+	IpAddress<IpAddressType> splitedIp;
 
 	std::string::size_type start = 0;
     std::string::size_type stop = ip.find_first_of(DOT);
@@ -34,7 +34,7 @@ void Parser::splitIpAddressIntoPartsAndSave(std::string ip)
     ip_pool.push_back(splitedIp);
 }
 
-auto Parser::get_raw_ip_pool(void) -> const IpAddressPool<unsigned int> *
+IpAddressPool<IpAddressType>& Parser::get_ip_pool(void)
 {
-	return &ip_pool;
+	return ip_pool;
 }

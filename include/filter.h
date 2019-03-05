@@ -9,9 +9,8 @@
 
 class Filter 
 {
-	const int MAX_PARTS_QNT = 4;
-	const IpAddressPool<unsigned int> *original_pool;
-	std::vector<unsigned int> ip_parts;
+	const IpAddressPool<IpAddressType> *original_pool;
+	IpAddress<IpAddressType> looked_for_ip_parts;
 
 public:
 	Filter() = default;
@@ -22,37 +21,23 @@ public:
 	template<typename T>
 	void show_ips_starting_with(T ip_part)
 	{
-		bool all_ip_parts_found;
-
-		ip_parts.push_back(ip_part);
+		looked_for_ip_parts.push_back(ip_part);
 		
 		for(auto ip : *original_pool)
 		{
-			all_ip_parts_found = true;
-
-			for(auto i = 0; i < ip_parts.size() && i < MAX_PARTS_QNT; ++i)
+			if(std::equal(looked_for_ip_parts.begin(), looked_for_ip_parts.end(), ip.begin()))
 			{
-				if(ip_parts.at(i) != ip.at(i))
-				{
-					all_ip_parts_found = false;
-					break;
-				}
-			}
-
-			if(all_ip_parts_found)
-			{
-				Printer::print_ip(&ip);
-			}
-					
+				Printer::print_ip(ip);
+			}					
 		}
 
-		ip_parts.clear();
+		looked_for_ip_parts.clear();
 	}
 
 	template<typename T, typename... Args>
 	void show_ips_starting_with(T ip_part, Args... args)
 	{
-		ip_parts.push_back(ip_part);
+		looked_for_ip_parts.push_back(ip_part);
 		show_ips_starting_with(args...);
 	}
 
@@ -61,14 +46,14 @@ public:
 	{
 		for(auto ip : *original_pool)
 		{
-			if(std::find(ip.begin(), ip.end(), ip_part) != ip.end())
+			if(std::any_of(ip.begin(), ip.end(), [&](IpAddressType ipp) { return ipp == ip_part; } ))
 			{		
-				Printer::print_ip(&ip);
+				Printer::print_ip(ip);
 			}
 		}	
 	}
 
-    void set_ip_pool_to_be_filtered(const IpAddressPool<unsigned int> *ip_pool);
+    void set_ip_pool_to_be_filtered(IpAddressPool<IpAddressType> &ip_pool);
 	void show_ips_as_is(void);
 };
 

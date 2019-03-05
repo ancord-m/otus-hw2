@@ -5,23 +5,23 @@
 #include <vector>
 #include "aliases.h"
 
-class Parser {
-
+class Parser 
+{
 	enum Delimiters
 	{
 		DOT = '.',
 		TAB = '\t'
 	};
 
-	IpAddressPool<unsigned int> ip_pool;
+	IpAddressPool<IpAddressType> ip_pool;
 
-	public:
+public:
 		Parser();
 	   ~Parser() = default;
 	   
-		auto captureTextBeforeFirstTab(std::string) -> std::string;
+		std::string captureTextBeforeFirstTab(std::string);
 		void splitIpAddressIntoPartsAndSave(std::string line);		
-		auto get_raw_ip_pool(void) -> const IpAddressPool<unsigned int> *;
+		IpAddressPool<IpAddressType>& get_ip_pool(void);
 };
 
 #endif

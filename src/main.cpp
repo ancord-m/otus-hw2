@@ -16,9 +16,9 @@ int main(int argc, char const *argv[])
         parser.splitIpAddressIntoPartsAndSave(text);
     }
 
-    sorter.sort_inversely_ip_pool(parser.get_raw_ip_pool());
+    sorter.sort_inversely_ip_pool(parser.get_ip_pool());
 
-    filter.set_ip_pool_to_be_filtered(sorter.get_inversley_sorted_ip_pool());
+    filter.set_ip_pool_to_be_filtered(parser.get_ip_pool());
 
     filter.show_ips_as_is();
     filter.show_ips_starting_with(1);

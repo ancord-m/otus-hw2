@@ -3,9 +3,9 @@
 
 #include "aliases.h"
 
-class Printer {
-public:
-	static void print_ip(const IpAddress<unsigned int> *);
+struct Printer
+{
+	static void print_ip(const IpAddress<IpAddressType> &ip);
 };
 
 #endif

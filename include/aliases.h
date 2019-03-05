@@ -4,10 +4,12 @@
 #include <string>
 #include <vector>
 
-template<typename T>
-using IpAddressPool = std::vector<std::vector<T> >;
+using IpAddressType = unsigned int;
 
 template<typename T>
 using IpAddress = std::vector<T>;
+
+template<typename T>
+using IpAddressPool = std::vector<IpAddress<T>>;
 
 #endif
